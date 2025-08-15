@@ -1,26 +1,383 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="utf-8">
-      <meta name="description" content="alphasec">
-      <meta name="author" content="alphasec">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>alphasec</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-      <link rel="stylesheet" href="/styles.css">
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap">
-      <link rel="icon" href="/favicon.ico" type="image/x-icon">
-  </head>
-  <body>
-    <div class="row">
-      <h1 class="h1">alphasec</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iinkwell - Professional Screenwriting in Google Docs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <span class="video-close" onclick="closeVideoModal()">&times;</span>
+            <div class="video-container">
+                <video id="modalVideo" controls>
+                    <source src="https://cdn.prod.website-files.com/64997e98529708c66106aad8/65fdded13ad3fcd645d93a9b_features video-transcode.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <div>
-      </div>
-    </div>
-    <div class="row">
-      <span class="text-muted small">alphasec © 2024. All rights reserved.</span>
-    </div>
-  </body>
+
+    <!-- Header/Navigation -->
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon">✒</div>
+                iinkwell <span style="color: var(--light-grey); font-size: 0.8em; font-weight: 400;">(powered by G-script)</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+            </ul>
+            <a href="#" class="cta-button">Start Free Trial</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Professional Screenwriting<br>Directly in Google Docs</h1>
+                <p class="subtitle">Transform Google Docs into a powerful screenwriting tool with professional formatting, seamless collaboration, and effortless sharing</p>
+                <a href="#" class="hero-cta">Start Writing for Free</a>
+                <a href="#" class="hero-cta secondary">Watch Demo</a>
+                
+                <div class="hero-visual">
+                    <div class="video-preview" onclick="openVideoModal()">
+                        <img src="https://cdn.prod.website-files.com/64997e98529708c66106aad8/65fdded13ad3fcd645d93a9b_features%20video-poster-00001.jpg" alt="iinkwell Demo Video">
+                        <div class="video-play-overlay">
+                            <div class="play-button">▶</div>
+                            <div class="video-preview-text">See how it works in under 30 seconds</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <div class="proof-items">
+                <div class="proof-item">
+                    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
+                    <span>5.0 rating</span>
+                </div>
+                <div class="proof-item">
+                    <strong>134+</strong> screenwriters
+                </div>
+                <div class="proof-item">
+                    <strong>100%</strong> 5-star reviews
+                </div>
+                <div class="proof-item">
+                    Chrome & Mozilla stores
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <h2>Why Screenwriters Choose iinkwell</h2>
+            <p class="subtitle">The only professional screenwriting tool that works directly inside Google Docs, combining the power of professional formatting with effortless collaboration</p>
+            
+            <div class="value-grid">
+                <div class="value-item">
+                    <div class="value-icon">🎯</div>
+                    <h3>Zero Learning Curve</h3>
+                    <p>Works in Google Docs - no new software to learn, no workflow disruption</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">🤝</div>
+                    <h3>Seamless Collaboration</h3>
+                    <p>Share instantly, get real-time feedback, collaborate without file compatibility issues</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">⚡</div>
+                    <h3>Professional Results</h3>
+                    <p>Industry-standard formatting with simple shortcuts that keep you in the flow</p>
+                </div>
+                <div class="value-item">
+                    <div class="value-icon">💰</div>
+                    <h3>Affordable Excellence</h3>
+                    <p>Professional screenwriting without the $250+ price tag of traditional software</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Features Showcase -->
+    <section class="features-showcase" id="features">
+        <div class="container">
+            <h2>Everything You Need to Write Professionally</h2>
+            <p class="subtitle">Powerful screenwriting features that integrate seamlessly with Google Docs' collaboration tools</p>
+
+            <div class="feature-section">
+                <div class="feature-content">
+                    <div class="feature-text">
+                        <h3>One-Click Professional Formatting</h3>
+                        <p>Transform your text into industry-standard screenplay format with simple shortcuts. No tab keys, no complex menus - just clean, professional scripts.</p>
+                        <ul class="feature-benefits">
+                            <li>Industry-standard screenplay formatting</li>
+                            <li>Character, dialogue, and action shortcuts</li>
+                            <li>Scene headers and transitions</li>
+                            <li>Automatic margin and spacing</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        <img src="https://cdn.prod.website-files.com/64997e98529708c66106aad8/65fdde06bb38ed7fa4fefdce_Start%20writing.png" alt="iinkwell formatting toolbar" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content reverse">
+                    <div class="feature-text">
+                        <h3>Real-Time Scene & Dialogue Tracking</h3>
+                        <p>Stay on top of your screenplay's structure with automatic scene counting and dialogue analytics. Perfect for tracking pacing and character development.</p>
+                        <ul class="feature-benefits">
+                            <li>Automatic scene counting</li>
+                            <li>Dialogue line tracking</li>
+                            <li>Character speech analytics</li>
+                            <li>Progress visualization</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        [Screenshot: Analytics dashboard]
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content">
+                    <div class="feature-text">
+                        <h3>AI-Powered Writing Assistant</h3>
+                        <p>Enhance your writing with intelligent AI tools for rephrasing, improving dialogue, fixing grammar, and custom prompts tailored to screenwriting.</p>
+                        <ul class="feature-benefits">
+                            <li>Rephrase dialogue and action lines</li>
+                            <li>Grammar and style corrections</li>
+                            <li>Custom screenwriting prompts</li>
+                            <li>Shorten wordy descriptions</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        [Screenshot: AI assistant in action]
+                    </div>
+                </div>
+            </div>
+
+            <div class="feature-section">
+                <div class="feature-content reverse">
+                    <div class="feature-text">
+                        <h3>Effortless Collaboration</h3>
+                        <p>Leverage Google Docs' powerful collaboration features with professional screenplay formatting. Share with directors, producers, or writing partners instantly.</p>
+                        <ul class="feature-benefits">
+                            <li>Real-time collaborative editing</li>
+                            <li>Comments and suggestions</li>
+                            <li>Version history and tracking</li>
+                            <li>Instant sharing and permissions</li>
+                        </ul>
+                    </div>
+                    <div class="feature-visual">
+                        <img src="https://i.insider.com/60afd36ebee0fc0019d59f8f?width=800&format=jpeg&auto=webp" alt="Google Docs collaboration in action" style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2>Get Started in Minutes</h2>
+            <p class="subtitle">Professional screenwriting setup in less than 2 minutes</p>
+            
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Get Started in Minutes</h3>
+                    <p>Download iinkwell from Chrome Web Store or Mozilla Add-ons with one click</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Create Account</h3>
+                    <p>Quick sign-up process to access all features and sync your preferences</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Open Google Doc</h3>
+                    <p>Start with any new or existing Google Doc - iinkwell integrates seamlessly</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Start Writing</h3>
+                    <p>Click the iinkwell icon, hit "Start Writing" and begin crafting your professional screenplay</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>Simple, Transparent Pricing</h2>
+            <p class="subtitle">Start free, upgrade when you need advanced features</p>
+            
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>Free</h3>
+                    <div class="price">$0</div>
+                    <div class="price-period">forever</div>
+                    <ul class="features-list">
+                        <li>Basic screenplay formatting</li>
+                        <li>Scene and dialogue counting</li>
+                        <li>Google Docs integration</li>
+                        <li>Community support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="display: block; text-align: center;">Get Started Free</a>
+                </div>
+                
+                <div class="pricing-card featured">
+                    <h3>Pro</h3>
+                    <div class="price">$4.99</div>
+                    <div class="price-period">per month</div>
+                    <ul class="features-list">
+                        <li>Everything in Free</li>
+                        <li>AI writing assistant</li>
+                        <li>Advanced analytics</li>
+                        <li>Custom formatting presets</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="#" class="cta-button" style="display: block; text-align: center;">Start Pro Trial</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>Loved by Screenwriters</h2>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "Finally, a screenwriting tool that doesn't fight against my workflow. I can write in Google Docs and share scripts instantly with my collaborators."
+                    </div>
+                    <div class="testimonial-author">Sarah M., Independent Screenwriter</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "The collaboration features are game-changing. No more 'can you open this Final Draft file?' emails with my writing partners."
+                    </div>
+                    <div class="testimonial-author">Mike R., TV Writer</div>
+                </div>
+                
+                <div class="testimonial">
+                    <div class="testimonial-text">
+                        "I love how it keeps me focused on writing instead of formatting. The shortcuts are intuitive and the results look professional."
+                    </div>
+                    <div class="testimonial-author">Jessica L., Film Student</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <div class="final-cta-content">
+                <h2>Ready to Transform Your Screenwriting?</h2>
+                <p class="subtitle">Join hundreds of screenwriters who've made the switch to effortless collaboration and professional formatting</p>
+                <a href="#" class="hero-cta" style="font-size: 1.3rem; padding: 1.2rem 2.5rem;">Start Writing for Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Chrome Extension</a></li>
+                        <li><a href="#">Firefox Add-on</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Getting Started</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Bug Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 iinkwell. Professional screenwriting made simple.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function openVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.style.display = 'block';
+            video.currentTime = 0; // Reset video to beginning
+            video.play();
+        }
+
+        function closeVideoModal() {
+            const modal = document.getElementById('videoModal');
+            const video = document.getElementById('modalVideo');
+            modal.style.display = 'none';
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target === modal) {
+                closeVideoModal();
+            }
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeVideoModal();
+            }
+        });
+    </script>
+</body>
 </html>
