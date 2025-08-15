@@ -83,6 +83,66 @@ nav {
   gap: 1rem;
 }
 
+/* Mobile menu styles */
+.mobile-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--dark-grey);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--white);
+  box-shadow: 0 4px 20px rgba(1, 71, 180, 0.1);
+  border-top: 1px solid rgba(1, 71, 180, 0.1);
+}
+
+.mobile-menu.active {
+  display: block;
+}
+
+.mobile-menu .nav-links {
+  flex-direction: column;
+  gap: 0;
+  padding: 1rem 0;
+}
+
+.mobile-menu .nav-links li {
+  border-bottom: 1px solid rgba(1, 71, 180, 0.05);
+}
+
+.mobile-menu .nav-links a {
+  display: block;
+  padding: 1rem 2rem;
+  color: var(--dark-grey);
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+}
+
+.mobile-menu .nav-links a:hover {
+  background: rgba(1, 71, 180, 0.05);
+  color: var(--navy-blue);
+}
+
+.mobile-cta {
+  padding: 1rem 2rem;
+  border-top: 1px solid rgba(1, 71, 180, 0.1);
+}
+
+.mobile-cta .cta-button {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
 .login-link {
   text-decoration: none;
   color: var(--dark-grey);
@@ -845,19 +905,48 @@ footer {
   }
 }
 
+/* Mobile Navigation - starts at tablet breakpoint */
+@media (max-width: 1024px) {
+  nav {
+    position: relative;
+  }
+
+  /* Hide desktop navigation */
+  nav > .nav-links {
+      display: none;
+  }
+
+  nav > .cta-button {
+      display: none;
+  }
+
+  .mobile-menu-toggle {
+      display: block;
+  }
+
+  /* Show mobile menu links when active */
+  .mobile-menu .nav-links {
+      display: flex;
+  }
+
+  .logo {
+     font-size: 1.5rem;
+  }
+
+  .logo span {
+      display: none; /* Hide "(powered by G-script)" on mobile */
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .hero h1 {
       font-size: 2.5rem;
   }
   
-  .feature-content {
+    .feature-content {
       grid-template-columns: 1fr;
       gap: 3rem;
-  }
-  
-  .nav-links {
-      display: none;
   }
 
   .proof-items {

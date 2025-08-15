@@ -40,7 +40,7 @@ function init_tracer() {
 
     <!-- Header/Navigation -->
     <header>
-        <nav class="container">
+        <!-- <nav class="container">
             <a href="#" class="logo">
                 <img src="images/icons/iinkwell_logo.png" alt="iinkwell logo" class="logo-image">
                 iinkwell <span style="color: var(--light-grey); font-size: 0.8em; font-weight: 400;">(powered by G-script)</span>
@@ -54,7 +54,38 @@ function init_tracer() {
                 <a href="https://app.g-script.org/login" class="login-link">Login</a>
                 <a href="https://app.g-script.org/sign-up" class="cta-button">Start Free Today!</a>
             </div>
-        </nav>
+        </nav> -->
+        <nav class="container">
+          <a href="#" class="logo">
+              <img src="images/icons/iinkwell_logo.png" alt="iinkwell logo" class="logo-image">
+              iinkwell <span style="color: var(--light-grey); font-size: 0.8em; font-weight: 400;">(powered by G-script)</span>
+          </a>
+          
+          <!-- Desktop Navigation -->
+          <ul class="nav-links">
+              <li><a href="#features">Features</a></li>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="https://app.g-script.org/login" style="font-size: 0.9em; color: var(--dark-grey);">Login</a></li>
+          </ul>
+          <a href="https://app.g-script.org/sign-up" class="cta-button">Start Free Today!</a>
+          
+          <!-- Mobile Menu Toggle -->
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+          
+          <!-- Mobile Menu -->
+          <div class="mobile-menu" id="mobileMenu">
+              <ul class="nav-links">
+                  <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
+                  <li><a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
+                  <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
+                  <li><a href="https://app.g-script.org/login">Login</a></li>
+              </ul>
+              <div class="mobile-cta">
+                  <a href="https://app.g-script.org/sign-up" class="cta-button">Start Free Today!</a>
+              </div>
+          </div>
+      </nav>
     </header>
 
     <!-- Hero Section -->
@@ -408,5 +439,57 @@ function init_tracer() {
             }
         });
     </script>
+
+<script>
+  function toggleMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.toggle('active');
+  }
+
+  function closeMobileMenu() {
+      const mobileMenu = document.getElementById('mobileMenu');
+      mobileMenu.classList.remove('active');
+  }
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById('mobileMenu');
+      const toggle = document.querySelector('.mobile-menu-toggle');
+      
+      if (!mobileMenu.contains(event.target) && !toggle.contains(event.target)) {
+          mobileMenu.classList.remove('active');
+      }
+  });
+
+  // Existing video modal functions...
+  function openVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('modalVideo');
+      modal.style.display = 'block';
+      video.currentTime = 0;
+      video.play();
+  }
+
+  function closeVideoModal() {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('modalVideo');
+      modal.style.display = 'none';
+      video.pause();
+      video.currentTime = 0;
+  }
+
+  window.onclick = function(event) {
+      const modal = document.getElementById('videoModal');
+      if (event.target === modal) {
+          closeVideoModal();
+      }
+  }
+
+  document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+          closeVideoModal();
+      }
+  });
+</script>
 </body>
 </html>
