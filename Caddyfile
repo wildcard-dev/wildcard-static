@@ -3,6 +3,8 @@
 root * /srv
 file_server
 
-# Ensure proper MIME types
+# Add headers for better browser compatibility
+header / Cache-Control "no-cache, no-store, must-revalidate"
+header *.css Cache-Control "no-cache, no-store, must-revalidate"
 header *.css Content-Type "text/css"
 header *.js Content-Type "application/javascript"
