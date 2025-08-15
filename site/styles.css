@@ -498,6 +498,16 @@ nav {
   box-shadow: 0 10px 30px rgba(1, 71, 180, 0.05);
 }
 
+.feature-visual img {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.feature-visual img:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
 /* How It Works */
 .how-it-works {
   padding: 6rem 0;
