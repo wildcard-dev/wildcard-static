@@ -2,3 +2,7 @@
 
 root * /srv
 file_server
+
+# Ensure proper MIME types
+header *.css Content-Type "text/css"
+header *.js Content-Type "application/javascript"
