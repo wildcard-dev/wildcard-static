@@ -60,6 +60,12 @@ nav {
   border-radius: 8px;
 }
 
+.logo-subtitle {
+  color: var(--light-grey);
+  font-size: 0.5em;
+  font-weight: 400;
+}
+
 .nav-links {
   display: flex;
   list-style: none;
@@ -933,7 +939,7 @@ footer {
      font-size: 1.5rem;
   }
 
-  .logo span {
+  .logo-subtitle {
       display: none; /* Hide "(powered by G-script)" on mobile */
   }
 }
