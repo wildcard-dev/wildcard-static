@@ -3,125 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iinkwell - Professional Screenwriting in Google Docs</title>
+    <title>Product Development for Non-Technical Founders | Wildcard Product Studio</title>
+    <meta name="description" content="Transform your product vision into reality without the technical overwhelm. Strategic product development services for ambitious founders who think big.">
     
-    <!-- Meta Description -->
-    <meta name="description" content="Transform Google Docs into a powerful screenwriting tool with professional formatting, seamless collaboration, and effortless sharing. Write screenplays directly in Google Docs with zero learning curve.">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://iinkwell.com/">
-    <meta property="og:title" content="iinkwell - Professional Screenwriting in Google Docs">
-    <meta property="og:description" content="Transform Google Docs into a powerful screenwriting tool with professional formatting, seamless collaboration, and effortless sharing. Write screenplays directly in Google Docs with zero learning curve.">
-    <meta property="og:image" content="https://iinkwell.com/images/screenshots/formatting.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="iinkwell professional screenwriting formatting toolbar in Google Docs">
-    <meta property="og:site_name" content="iinkwell">
-    <meta property="og:locale" content="en_US">
-    
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@iinkwellapp">
-    <meta name="twitter:creator" content="@iinkwellapp">
-    <meta name="twitter:title" content="iinkwell - Professional Screenwriting in Google Docs">
-    <meta name="twitter:description" content="Transform Google Docs into a powerful screenwriting tool with professional formatting, seamless collaboration, and effortless sharing. Write screenplays directly in Google Docs with zero learning curve.">
-    <meta name="twitter:image" content="https://iinkwell.com/images/screenshots/formatting.png">
-    <meta name="twitter:image:alt" content="iinkwell professional screenwriting formatting toolbar in Google Docs">
-    
-    <!-- LinkedIn -->
-    <meta property="article:author" content="iinkwell">
-    <meta property="article:publisher" content="https://www.linkedin.com/company/iinkwellapp">
-    
-    <!-- Additional SEO -->
-    <meta name="keywords" content="screenwriting, Google Docs, screenplay, script writing, collaboration, professional formatting, film writing, television writing">
-    <meta name="author" content="iinkwell">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://iinkwell.com/">
-    
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon/favicon-16x16.png">
-    <link rel="manifest" href="images/icons/favicon/site.webmanifest">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <script async defer src='https://app.visitortracking.com/assets/js/tracer.js'></script>
-<script>
-function init_tracer() { 
-   var tracer = new Tracer({  
-   websiteId : "e5a88d02-174e-4f1b-ba13-1197f049cb2a",  
-   async : true, 
-   debug : false }); 
- } 
- </script>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #f59e0b;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #64748b;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #f59e0b;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #3b82f6 100%);
+            color: white;
+            padding: 8rem 0 6rem;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background: #f59e0b;
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #d97706;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        }
+
+        .hero-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Value Stack */
+        .value-stack {
+            background: #f8fafc;
+            padding: 4rem 0;
+        }
+
+        .value-items {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .value-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .value-item h3 {
+            color: #f59e0b;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Stakes Section */
+        .stakes {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .stakes h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .problem-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #fef3c7;
+            border-radius: 8px;
+            border-left: 4px solid #f97316;
+        }
+
+        .problem-item::before {
+            content: "⚠️";
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        /* Value Proposition */
+        .value-prop {
+            background: #f8fafc;
+            padding: 6rem 0;
+        }
+
+        .value-prop h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(251, 191, 36, 0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            border-radius: 12px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .secondary-cta {
+            background: #3b82f6;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .secondary-cta:hover {
+            background: #2563eb;
+        }
+
+        /* Guide Section */
+        .guide {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .guide-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .guide h2 {
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 2rem;
+        }
+
+        .empathy-statement {
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 3rem;
+            font-style: italic;
+        }
+
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: #f8fafc;
+            padding: 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #3b82f6;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #374151;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #3b82f6;
+        }
+
+        /* Plan Section */
+        .plan {
+            background: #f8fafc;
+            padding: 6rem 0;
+        }
+
+        .plan h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #1f2937;
+            margin-bottom: 3rem;
+        }
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step h3 {
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 1rem;
+        }
+
+        /* Explanatory Section */
+        .explanatory {
+            background: #1f2937;
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+        }
+
+        .explanatory h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .explanatory p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+
+        /* Lead Magnet */
+        .lead-magnet {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+            padding: 6rem 0;
+        }
+
+        .magnet-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .magnet-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .magnet-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .magnet-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .magnet-list li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .magnet-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+
+        .magnet-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            color: #1f2937;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #1f2937;
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #f59e0b;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content,
+            .magnet-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .steps,
+            .value-items {
+                grid-template-columns: 1fr;
+            }
+
+            .problems-grid,
+            .testimonials {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Video Modal -->
-    <div id="videoModal" class="video-modal">
-        <div class="video-modal-content">
-            <span class="video-close" onclick="closeVideoModal()">&times;</span>
-            <div class="video-container">
-                <video id="modalVideo" controls>
-                    <source src="https://cdn.prod.website-files.com/64997e98529708c66106aad8/65fdded13ad3fcd645d93a9b_features video-transcode.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-        </div>
-    </div>
-
-    <!-- Header/Navigation -->
+    <!-- Header -->
     <header>
         <nav class="container">
-          <a href="#" class="logo">
-              <img src="images/icons/iinkwell_logo.png" alt="iinkwell logo" class="logo-image">
-              iinkwell <span class="logo-subtitle">(powered by G-script)</span>
-          </a>
-          
-          <!-- Desktop Navigation -->
-          <ul class="nav-links">
-              <li><a href="#features">Features</a></li>
-              <li><a href="#how-it-works">How It Works</a></li>
-              <li><a href="#pricing">Pricing</a></li>
-              <li><a href="https://app.g-script.org/login" style="font-size: 0.9em; color: var(--dark-grey);">Login</a></li>
-          </ul>
-          <a href="https://app.g-script.org/sign-up" class="cta-button">Start Free Today!</a>
-          
-          <!-- Mobile Menu Toggle -->
-          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
-          
-          <!-- Mobile Menu -->
-          <div class="mobile-menu" id="mobileMenu">
-              <ul class="nav-links">
-                  <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
-                  <li><a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
-                  <li><a href="#pricing" onclick="closeMobileMenu()">Pricing</a></li>
-                  <li><a href="https://app.g-script.org/login">Login</a></li>
-              </ul>
-              <div class="mobile-cta">
-                  <a href="https://app.g-script.org/sign-up" class="cta-button">Start Free Today!</a>
-              </div>
-          </div>
-      </nav>
+            <a href="#" class="logo">Wildcard Product Studio</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-we-work">How We Work</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Professional Screenwriting<br>Directly in Google Docs</h1>
-                <p class="subtitle">Transform Google Docs into a powerful screenwriting tool with professional formatting, seamless collaboration, and effortless sharing</p>
-                <a href="https://app.g-script.org/sign-up" class="hero-cta">Start Writing for Free</a>
-                <a href="#" class="hero-cta secondary" onclick="openVideoModal()">Watch Demo</a>
-                
-                <div class="hero-visual">
-                    <div class="video-preview" onclick="openVideoModal()">
-                        <img src="https://cdn.prod.website-files.com/64997e98529708c66106aad8/65fdded13ad3fcd645d93a9b_features%20video-poster-00001.jpg" alt="iinkwell Demo Video">
-                        <div class="video-play-overlay">
-                            <div class="play-button">▶</div>
-                            <div class="video-preview-text">See how it works in under 30 seconds</div>
+                <div class="hero-text">
+                    <h1>Turn Your Vision Into a Market-Ready Product</h1>
+                    <p>Product strategy and custom development for non-technical founders who want to build scalable software without the technical overwhelm.</p>
+                    <a href="#contact" class="cta-button">Schedule Your Free Strategy Call</a>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-visual">
+                        <div>
+                            <h3>🚀 From Idea to Launch</h3>
+                            <p>Non-technical founder confidently presenting their launched product to investors</p>
                         </div>
                     </div>
                 </div>
@@ -129,386 +579,234 @@ function init_tracer() {
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
+    <!-- Value Stack -->
+    <section class="value-stack">
         <div class="container">
-            <div class="proof-items">
-                <div class="proof-item">
-                    <span class="rating-stars">⭐⭐⭐⭐⭐</span>
-                    <span>5.0 rating</span>
+            <div class="value-items">
+                <div class="value-item">
+                    <h3>✓ Launch Faster</h3>
+                    <p>Skip the technical learning curve</p>
                 </div>
-                <div class="proof-item">
-                    <strong>250+</strong> screenwriters
+                <div class="value-item">
+                    <h3>✓ Build Smarter</h3>
+                    <p>Get strategic guidance from day one</p>
                 </div>
-                <div class="proof-item">
-                    <strong>100%</strong> 5-star reviews
+                <div class="value-item">
+                    <h3>✓ Scale Confidently</h3>
+                    <p>Products built for long-term growth</p>
                 </div>
-                <div class="proof-item">
-                    Chrome & Mozilla stores
+            </div>
+        </div>
+    </section>
+
+    <!-- Stakes Section -->
+    <section class="stakes">
+        <div class="container">
+            <h2>Sound Familiar?</h2>
+            <div class="problems-grid">
+                <div class="problem-item">
+                    <div>You have a great product idea but don't know where to start technically</div>
+                </div>
+                <div class="problem-item">
+                    <div>You built an app with Lovable, Replit, or Bolt but don't know how to make it market-ready</div>
+                </div>
+                <div class="problem-item">
+                    <div>You're stuck between "it works" and "people will pay for it"</div>
+                </div>
+                <div class="problem-item">
+                    <div>You're worried about making expensive development mistakes as you scale</div>
+                </div>
+                <div class="problem-item">
+                    <div>You've tried working with developers who don't understand your business goals</div>
+                </div>
+                <div class="problem-item">
+                    <div>You need someone who can think strategically, not just code</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Value Proposition -->
-    <section class="value-prop">
+    <section id="services" class="value-prop">
         <div class="container">
-            <h2>Why Screenwriters Choose iinkwell</h2>
-            <p class="subtitle">The only professional screenwriting tool that works directly inside Google Docs, combining the power of professional formatting with effortless collaboration</p>
-            
-            <div class="value-grid">
-                <div class="value-item">
-                    <div class="value-icon">🎯</div>
-                    <h3>Zero Learning Curve</h3>
-                    <p>Works in Google Docs - no new software to learn, no workflow disruption</p>
+            <h2>How We Can Help</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧭</div>
+                    <h3>Product Strategy & Validation</h3>
+                    <p>Whether you're starting from scratch or have a prototype from Lovable/Replit, get clarity on what to build next. We help validate your concept and create a roadmap that drives real business results.</p>
+                    <a href="#contact" class="secondary-cta">Learn About Strategy Services</a>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">🤝</div>
-                    <h3>Seamless Collaboration</h3>
-                    <p>Share instantly, get real-time feedback, collaborate without file compatibility issues</p>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Product Development & Scaling</h3>
+                    <p>Transform your idea into a market-ready product, or take your AI-built app to the next level. We handle the technical complexity while keeping you informed every step.</p>
+                    <a href="#contact" class="secondary-cta">Explore Development Services</a>
                 </div>
-                <div class="value-item">
-                    <div class="value-icon">⚡</div>
-                    <h3>Professional Results</h3>
-                    <p>Industry-standard formatting with simple shortcuts that keep you in the flow</p>
-                </div>
-                <div class="value-item">
-                    <div class="value-icon">💰</div>
-                    <h3>Affordable Excellence</h3>
-                    <p>Professional screenwriting without the $250+ price tag of traditional software</p>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon">🚀</div>
-                  <h3>Instant Setup</h3>
-                  <p>Install and start writing professionally in under 2 minutes - no complex configurations</p>
-                </div>
-                <div class="value-item">
-                  <div class="value-icon">🔄</div>
-                  <h3>Always Synced</h3>
-                  <p>Your scripts are automatically saved and accessible anywhere with Google Drive integration</p>
+                <div class="service-card">
+                    <div class="service-icon">📈</div>
+                    <h3>Product Optimization & Growth</h3>
+                    <p>Turn your working app into something people love and pay for. We help optimize user experience, add essential features, and prepare for sustainable growth.</p>
+                    <a href="#contact" class="secondary-cta">View Growth Options</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Key Features Showcase -->
-    <section class="features-showcase" id="features">
+    <!-- Guide Section -->
+    <section class="guide">
         <div class="container">
-            <h2>Everything You Need to Write Professionally</h2>
-            <p class="subtitle">Powerful screenwriting features that integrate seamlessly with Google Docs' collaboration tools</p>
-
-            <div class="feature-section">
-                <div class="feature-content">
-                    <div class="feature-text">
-                        <h3>One-Click Professional Formatting</h3>
-                        <p>Transform your text into industry-standard screenplay format with simple shortcuts. No tab keys, no complex menus - just clean, professional scripts.</p>
-                        <ul class="feature-benefits">
-                            <li>Industry-standard screenplay formatting</li>
-                            <li>Character, dialogue, and action shortcuts</li>
-                            <li>Scene headers and transitions</li>
-                            <li>Automatic margin and spacing</li>
-                        </ul>
+            <div class="guide-content">
+                <h2>We Get It</h2>
+                <p class="empathy-statement">"We understand that bringing a product idea to life can feel overwhelming when you don't have a technical background. And if you've already built something with AI tools like Lovable or Replit, you might be wondering 'Now what?' - We've got you covered."</p>
+                
+                <div class="testimonials">
+                    <div class="testimonial">
+                        <p>"We built our first version with Bolt but had no idea how to make it scalable. Wildcard helped us turn our prototype into a real business with paying customers."</p>
+                        <div class="testimonial-author">- Marcus K., SaaS Founder</div>
                     </div>
-                    <div class="feature-visual">
-                        <img src="images/screenshots/formatting.png" alt="iinkwell formatting toolbar" style="width: 100%; border-radius: 10px;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-section">
-                <div class="feature-content reverse">
-                    <div class="feature-text">
-                        <h3>Real-Time Scene & Dialogue Tracking</h3>
-                        <p>Stay on top of your screenplay's structure with automatic scene counting and dialogue analytics. Perfect for tracking pacing and character development.</p>
-                        <ul class="feature-benefits">
-                            <li>Automatic scene counting</li>
-                            <li>Dialogue line tracking</li>
-                            <li>Character speech analytics</li>
-                            <li>Progress visualization</li>
-                        </ul>
-                    </div>
-                    <div class="feature-visual">
-                        <img src="images/screenshots/tracking.png" alt="Analytics dashboard" style="width: 100%; border-radius: 10px;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-section">
-                <div class="feature-content">
-                    <div class="feature-text">
-                        <h3>AI-Powered Writing Assistant</h3>
-                        <p>Enhance your writing with intelligent AI tools for rephrasing, improving dialogue, fixing grammar, and custom prompts tailored to screenwriting.</p>
-                        <ul class="feature-benefits">
-                            <li>Rephrase dialogue and action lines</li>
-                            <li>Grammar and style corrections</li>
-                            <li>Custom screenwriting prompts</li>
-                            <li>Shorten wordy descriptions</li>
-                        </ul>
-                    </div>
-                    <div class="feature-visual">
-                        <img src="images/screenshots/ai.png" alt="AI assistant in action" style="width: 100%; border-radius: 10px;">
-                    </div>
-                </div>
-            </div>
-
-            <div class="feature-section">
-                <div class="feature-content reverse">
-                    <div class="feature-text">
-                        <h3>Effortless Collaboration</h3>
-                        <p>Leverage Google Docs' powerful collaboration features with professional screenplay formatting. Share with directors, producers, or writing partners instantly.</p>
-                        <ul class="feature-benefits">
-                            <li>Real-time collaborative editing</li>
-                            <li>Comments and suggestions</li>
-                            <li>Version history and tracking</li>
-                            <li>Instant sharing and permissions</li>
-                        </ul>
-                    </div>
-                    <div class="feature-visual">
-                        <img src="images/screenshots/sharing.png" alt="Google Docs collaboration in action" style="width: 100%; border-radius: 10px;">
+                    <div class="testimonial">
+                        <p>"Wildcard took our complex AI idea and made it simple to understand and execute. They guided us through every decision without the technical overwhelm."</p>
+                        <div class="testimonial-author">- Sarah M., AI Startup Founder</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works -->
-    <section class="how-it-works" id="how-it-works">
+    <!-- Plan Section -->
+    <section id="how-we-work" class="plan">
         <div class="container">
-            <h2>Get Started in Minutes</h2>
-            <p class="subtitle">Professional screenwriting setup in less than 2 minutes</p>
-            
-            <div class="steps-container">
+            <h2>How It Works</h2>
+            <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Get Started in Minutes</h3>
-                    <p>Download iinkwell from Chrome Web Store or Mozilla Add-ons with one click</p>
+                    <h3>Free Strategy Call</h3>
+                    <p>We discuss your vision, challenges, and goals to determine the best path forward for your product.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Create Account</h3>
-                    <p>Quick sign-up process to access all features and sync your preferences</p>
+                    <h3>Custom Proposal</h3>
+                    <p>Receive a tailored plan with clear timeline, deliverables, and next steps - no technical jargon.</p>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Open Google Doc</h3>
-                    <p>Start with any new or existing Google Doc - iinkwell integrates seamlessly</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>Start Writing</h3>
-                    <p>Click the iinkwell icon, hit "Start Writing" and begin crafting your professional screenplay</p>
+                    <h3>Launch Your Product</h3>
+                    <p>Watch your idea become reality with ongoing guidance and support throughout the journey.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pricing -->
-    <section class="pricing" id="pricing">
+    <!-- Explanatory Paragraph -->
+    <section id="about" class="explanatory">
         <div class="container">
-            <h2>Simple, Transparent Pricing</h2>
-            <p class="subtitle">Start free, upgrade when you need advanced features</p>
-            
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3>Free</h3>
-                    <div class="price">$0</div>
-                    <div class="price-period">forever</div>
-                    <ul class="features-list">
-                        <li>Basic screenplay formatting</li>
-                        <li>Scene and dialogue counting</li>
-                        <li>Google Docs integration</li>
-                        <li>Community support</li>
+            <h2>Ready to Build Something Remarkable?</h2>
+            <p>At Wildcard Product Studio, we know what it's like to have a game-changing product idea but feel lost in the technical complexity. Maybe you've even built something with Lovable, Replit, or Bolt but don't know how to turn it into a real business. That's why we created a clear, strategic approach to product development that speaks your language, not ours. So you can focus on growing your business while we handle the technical execution.</p>
+            <a href="#contact" class="cta-button">Get Your Free Strategy Session</a>
+        </div>
+    </section>
+
+    <!-- Lead Magnet -->
+    <section class="lead-magnet">
+        <div class="container">
+            <div class="magnet-content">
+                <div class="magnet-text">
+                    <h2>Free Resource for Ambitious Founders</h2>
+                    <h3>From AI-Built App to Market-Ready Product</h3>
+                    <p>The complete guide for founders who've built something with Lovable, Replit, Bolt, or Lazy but don't know what comes next</p>
+                    
+                    <ul class="magnet-list">
+                        <li>Product validation framework for existing apps</li>
+                        <li>User research templates to understand what people actually want</li>
+                        <li>Technical audit checklist: Is your app ready to scale?</li>
+                        <li>Go-to-market strategy worksheet</li>
+                        <li>Revenue model decision tree</li>
                     </ul>
-                    <a href="https://app.g-script.org/sign-up" class="cta-button" style="display: block; text-align: center;">Get Started Free</a>
                 </div>
                 
-                <div class="pricing-card featured">
-                    <h3>Pro</h3>
-                    <div class="price">$4.99</div>
-                    <div class="price-period">per month</div>
-                    <ul class="features-list">
-                        <li>Everything in Free</li>
-                        <li>AI writing assistant</li>
-                        <!-- <li>Advanced analytics</li> -->
-                        <li>Custom formatting presets</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="https://app.g-script.org/sign-up" class="cta-button" style="display: block; text-align: center;">Start Pro Trial</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials">
-        <div class="container">
-            <h2>Loved by Screenwriters</h2>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        "Finally, a screenwriting tool that doesn't fight against my workflow. I can write in Google Docs and share scripts instantly with my collaborators."
+                <form class="magnet-form">
+                    <h3 style="margin-bottom: 1rem; color: #1f2937;">Download Your Free Guide</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
                     </div>
-                    <div class="testimonial-author">Sarah M., Independent Screenwriter</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        "The collaboration features are game-changing. No more 'can you open this Final Draft file?' emails with my writing partners."
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
                     </div>
-                    <div class="testimonial-author">Mike R., TV Writer</div>
-                </div>
-                
-                <div class="testimonial">
-                    <div class="testimonial-text">
-                        "I love how it keeps me focused on writing instead of formatting. The shortcuts are intuitive and the results look professional."
+                    <div class="form-group">
+                        <input type="text" placeholder="Company Name">
                     </div>
-                    <div class="testimonial-author">Jessica L., Film Student</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="final-cta-content">
-                <h2>Ready to Transform Your Screenwriting?</h2>
-                <p class="subtitle">Join hundreds of screenwriters who've made the switch to effortless collaboration and professional formatting</p>
-                <a href="https://app.g-script.org/sign-up" class="hero-cta" style="font-size: 1.3rem; padding: 1.2rem 2.5rem;">Start Writing for Free</a>
+                    <button type="submit" class="cta-button" style="width: 100%;">Download Free Guide</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="https://chromewebstore.google.com/detail/g-script/onhpadpojadodaodmnnaeapdhmcdlmpe?hl=en">Chrome Extension</a></li>
-                        <li><a href="https://addons.mozilla.org/en-US/firefox/addon/g-script/">Firefox Add-on</a></li>
-                    </ul>
+                    <h3>Wildcard Product Studio</h3>
+                    <p style="color: #d1d5db; margin-bottom: 1rem;">Product Strategy & Development for Non-Technical Founders</p>
+                    <p style="color: #d1d5db;">Phone: +1 312-505-1093</p>
+                    <p style="color: #d1d5db;">Email: courtney@askwildcard.com</p>
                 </div>
+                
                 <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Getting Started</a></li>
-                        <li><a href="#">Contact Us</a></li>
-                        <li><a href="#">Bug Reports</a></li>
-                    </ul>
+                    <h3>Services</h3>
+                    <a href="#services">Product Strategy & Validation</a>
+                    <a href="#services">Custom Development</a>
+                    <a href="#services">Product Optimization</a>
+                    <a href="#how-we-work">How We Work</a>
                 </div>
+                
                 <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <ul>
-                        <li><a href="https://www.instagram.com/iinkwellapp/">Instagram</a></li>
-                        <li><a href="https://x.com/iinkwellapp">Twitter</a></li>
-                        <li><a href="https://www.linkedin.com/company/iinkwellapp">LinkedIn</a></li>
-                    </ul>
+                    <h3>Resources</h3>
+                    <a href="#">Case Studies</a>
+                    <a href="#">Blog & Resources</a>
+                    <a href="#">Free Strategy Call</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
                 </div>
             </div>
+            
             <div class="footer-bottom">
-                <p>&copy; 2025 iinkwell. Professional screenwriting made simple.</p>
+                <p>&copy; 2025 Wildcard Product Studio. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        function openVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('modalVideo');
-            modal.style.display = 'block';
-            video.currentTime = 0; // Reset video to beginning
-            video.play();
-        }
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-        function closeVideoModal() {
-            const modal = document.getElementById('videoModal');
-            const video = document.getElementById('modalVideo');
-            modal.style.display = 'none';
-            video.pause();
-            video.currentTime = 0;
-        }
+        // Form submission handler
+        document.querySelector('.magnet-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you! Your free guide will be sent to your email shortly.');
+        });
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const modal = document.getElementById('videoModal');
-            if (event.target === modal) {
-                closeVideoModal();
-            }
-        }
-
-        // Close modal with Escape key
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeVideoModal();
+        // Add scroll effect to header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
             }
         });
     </script>
-
-<script>
-  function toggleMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.toggle('active');
-  }
-
-  function closeMobileMenu() {
-      const mobileMenu = document.getElementById('mobileMenu');
-      mobileMenu.classList.remove('active');
-  }
-
-  // Close mobile menu when clicking outside
-  document.addEventListener('click', function(event) {
-      const mobileMenu = document.getElementById('mobileMenu');
-      const toggle = document.querySelector('.mobile-menu-toggle');
-      
-      if (!mobileMenu.contains(event.target) && !toggle.contains(event.target)) {
-          mobileMenu.classList.remove('active');
-      }
-  });
-
-  // Existing video modal functions...
-  function openVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('modalVideo');
-      modal.style.display = 'block';
-      video.currentTime = 0;
-      video.play();
-  }
-
-  function closeVideoModal() {
-      const modal = document.getElementById('videoModal');
-      const video = document.getElementById('modalVideo');
-      modal.style.display = 'none';
-      video.pause();
-      video.currentTime = 0;
-  }
-
-  window.onclick = function(event) {
-      const modal = document.getElementById('videoModal');
-      if (event.target === modal) {
-          closeVideoModal();
-      }
-  }
-
-  document.addEventListener('keydown', function(event) {
-      if (event.key === 'Escape') {
-          closeVideoModal();
-      }
-  });
-</script>
 </body>
 </html>
