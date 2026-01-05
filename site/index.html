@@ -353,6 +353,7 @@
             text-transform: uppercase;
             animation: fadeInUp 0.8s ease 0.5s forwards;
             opacity: 0;
+            padding-top: 2rem;
         }
 
         .scroll-indicator .mouse {
@@ -710,7 +711,7 @@
 
         .who-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 1.5rem;
         }
 
@@ -935,18 +936,15 @@
         .founder-image {
             width: 300px;
             height: 360px;
-            background: linear-gradient(135deg, rgba(253, 73, 25, 0.2) 0%, var(--dark-surface) 50%, rgba(46, 172, 235, 0.2) 100%);
             border-radius: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow: hidden;
             position: relative;
         }
 
-        .founder-placeholder {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 6rem;
-            opacity: 0.2;
+        .founder-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .founder-content .section-label {
@@ -1238,9 +1236,12 @@
                 font-size: 3rem;
             }
 
-            .problem-grid,
-            .who-grid {
+            .problem-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .who-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
 
             .testimonials-grid {
@@ -1328,7 +1329,7 @@
             <div class="problem-header animate-on-scroll">
                 <span class="section-label">Sound Familiar?</span>
                 <h2 class="section-title">The Warning Signs<br>We See Every Day</h2>
-                <p class="section-description">These aren't just problems—they're symptoms of deeper dysfunction. We've seen them all, and we know how to fix them.</p>
+                <p class="section-description">These aren't just problems, they're symptoms of deeper dysfunction. We've seen them all, and we know how to fix them.</p>
             </div>
 
             <div class="problem-grid">
@@ -1342,7 +1343,7 @@
                 </div>
                 <div class="problem-card animate-on-scroll">
                     <h3>"Everyone's busy, but nothing moves."</h3>
-                    <p>Your team is working hard—or at least looks like it. But the product isn't progressing. There's always a blocker, always a delay.</p>
+                    <p>Your team is working hard, or at least looks like it. But the product isn't progressing. There's always a blocker, always a delay.</p>
                 </div>
                 <div class="problem-card animate-on-scroll">
                     <h3>"We're waiting on Amanda's design."</h3>
@@ -1365,7 +1366,7 @@
         <div class="coxswain-container">
             <div class="coxswain-content animate-on-scroll">
                 <h2>We're Your<br><span class="highlight">Coxswain</span></h2>
-                <p>In rowing, the coxswain is the non-rowing member who steers the boat, calls the strategy, and aligns the crew. They see what others can't—because they're not buried in the work of rowing.</p>
+                <p>In rowing, the coxswain is the non-rowing member who steers the boat, calls the strategy, and aligns the crew. They see what others can't, because they're not buried in the work of rowing.</p>
                 <p><strong>That's what we do for failing product teams.</strong></p>
                 <p>We're not here to row for you. We're here to steer your boat, align your crew, and get you across the finish line.</p>
             </div>
@@ -1412,7 +1413,7 @@
             <div class="section-header animate-on-scroll">
                 <span class="section-label">How We Work</span>
                 <h2 class="section-title">From Stuck to Shipped</h2>
-                <p class="section-description">We don't hand you a document and leave. We diagnose, plan, and execute—with you—until the job is done.</p>
+                <p class="section-description">We don't hand you a document and leave. We diagnose, plan, and execute, with you, until the job is done.</p>
             </div>
 
             <div class="services-grid">
@@ -1434,7 +1435,7 @@
                     <div class="service-number">02</div>
                     <div class="service-icon">&#128227;</div>
                     <h3>Call the Strategy</h3>
-                    <p>We align your crew with a clear, executable turnaround plan. Not vague recommendations—a sprint-by-sprint roadmap.</p>
+                    <p>We align your crew with a clear, executable turnaround plan. Not vague recommendations, a sprint-by-sprint roadmap.</p>
                     <ul class="service-features">
                         <li>Clear milestone-focused roadmap</li>
                         <li>Reorganized backlog with real priorities</li>
@@ -1532,7 +1533,7 @@
                 <div class="results-content animate-on-scroll">
                     <span class="section-label">What You Get</span>
                     <h2 class="section-title">From "We Might Lose This" to <span class="highlight">"We Hit Our Milestone"</span></h2>
-                    <p>Our clients don't just get unstuck—they ship. They hit their milestones. They secure their extensions. They stop dreading board meetings.</p>
+                    <p>Our clients don't just get unstuck, they ship. They hit their milestones. They secure their extensions. They stop dreading board meetings.</p>
                     <div class="results-stats">
                         <div class="stat-card">
                             <div class="stat-number">2-3 wks</div>
@@ -1566,7 +1567,7 @@
                                 <div class="role-icon">&#128203;</div>
                                 <div class="role-content">
                                     <strong>A Real Plan</strong>
-                                    <span>Not vague recommendations—a specific, sprint-by-sprint roadmap.</span>
+                                    <span>Not vague recommendations, a specific, sprint-by-sprint roadmap.</span>
                                 </div>
                             </li>
                             <li>
@@ -1611,7 +1612,7 @@
                 </article>
 
                 <article class="testimonial-card animate-on-scroll">
-                    <blockquote>"She doesn't just tell you what's wrong—she tells you exactly what to do about it, sprint by sprint. And then she makes sure it actually happens. That's the difference."</blockquote>
+                    <blockquote>"She doesn't just tell you what's wrong, she tells you exactly what to do about it, sprint by sprint. And then she makes sure it actually happens. That's the difference."</blockquote>
                     <div class="testimonial-author">
                         <div class="author-avatar">PM</div>
                         <div class="author-info">
@@ -1628,7 +1629,7 @@
     <section class="founder-section" id="founder">
         <div class="founder-container">
             <div class="founder-image animate-on-scroll">
-                <span class="founder-placeholder">CEW</span>
+                <img src="https://app.9am.works/media/asset/4af599a2-17dc-4ff5-86ca-c9f9336586c6/thumbnail?w=600&h=600" alt="Courtney Eimerman-Wallace">
             </div>
             <div class="founder-content animate-on-scroll">
                 <span class="section-label">The Founder</span>
@@ -1656,7 +1657,7 @@
                         <span>+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>Most consultants optimize what's working. We fix what's broken. We're not here to make your good product better—we're here to save your failing product from tanking your company. And we don't just advise; we stay to make sure the plan actually gets executed.</p>
+                        <p>Most consultants optimize what's working. We fix what's broken. We're not here to make your good product better, we're here to save your failing product from tanking your company. And we don't just advise; we stay to make sure the plan actually gets executed.</p>
                     </div>
                 </div>
 
@@ -1686,7 +1687,7 @@
                         <span>+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>If you're asking that question, you probably do. Book the assessment call—it's a 30-minute conversation. Worst case, we tell you you're fine and don't need us. Best case, we save your company.</p>
+                        <p>If you're asking that question, you probably do. Book the assessment call, it's a 30-minute conversation. Worst case, we tell you you're fine and don't need us. Best case, we save your company.</p>
                     </div>
                 </div>
 
@@ -1696,7 +1697,7 @@
                         <span>+</span>
                     </button>
                     <div class="faq-answer">
-                        <p>We offer flexible engagement models depending on your situation—from traditional consulting fees to equity-based arrangements where our incentives are fully aligned with your success. Let's talk about what makes sense for you.</p>
+                        <p>We offer flexible engagement models depending on your situation, from traditional consulting fees to equity-based arrangements where our incentives are fully aligned with your success. Let's talk about what makes sense for you.</p>
                     </div>
                 </div>
             </div>
@@ -1707,7 +1708,7 @@
     <section class="cta-section" id="contact">
         <div class="cta-container">
             <h2 class="animate-on-scroll">Ready to Get<br>Unstuck?</h2>
-            <p class="animate-on-scroll">Book a 30-minute crisis assessment. We'll tell you honestly whether we can help—and if we can, exactly what it would take to turn things around.</p>
+            <p class="animate-on-scroll">Book a 30-minute crisis assessment. We'll tell you honestly whether we can help, and if we can, exactly what it would take to turn things around.</p>
             <div class="cta-buttons animate-on-scroll">
                 <a href="mailto:hello@askwildcard.com" class="btn-primary">
                     Book Crisis Assessment
