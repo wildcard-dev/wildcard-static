@@ -3,233 +3,599 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Development for Non-Technical Founders | Wildcard Product Studio</title>
-    <meta name="description" content="Transform your product vision into reality without the technical overwhelm. Strategic product development services for ambitious founders who think big.">
-    
+    <meta name="description" content="Wildcard Studio fixes failing product initiatives. We're the coxswain for teams that are stuck, misaligned, or burning runway without shipping.">
+    <meta name="keywords" content="product turnaround, failing product, crisis management, product strategy, startup consulting">
+    <title>Wildcard Studio | The Coxswain for Failing Products</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+
     <style>
+        :root {
+            --wildcard-yellow: #fcbe20;
+            --wildcard-blue: #2eaceb;
+            --wildcard-orange: #fd4919;
+            --dark-bg: #0a0a0f;
+            --dark-surface: #12121a;
+            --dark-elevated: #1a1a24;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.7);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --gradient-accent: linear-gradient(135deg, var(--wildcard-orange), var(--wildcard-yellow));
+            --gradient-cool: linear-gradient(135deg, var(--wildcard-blue), var(--wildcard-yellow));
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--dark-bg);
+            color: var(--text-primary);
             line-height: 1.6;
-            color: #1a1a1a;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
+        /* Noise texture overlay */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
+            left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
             z-index: 1000;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
-        nav {
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 4rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
+            background: rgba(10, 10, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #f59e0b;
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
             text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+        }
+
+        .nav-logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
         }
 
         .nav-links {
             display: flex;
+            gap: 2.5rem;
             list-style: none;
-            gap: 2rem;
         }
 
         .nav-links a {
+            color: var(--text-secondary);
             text-decoration: none;
-            color: #64748b;
+            font-size: 0.9rem;
             font-weight: 500;
+            letter-spacing: 0.02em;
             transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--wildcard-yellow);
+            transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #f59e0b;
+            color: var(--text-primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: var(--gradient-accent);
+            color: var(--dark-bg);
+            padding: 0.75rem 1.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(253, 73, 25, 0.3);
         }
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, #fbbf24 0%, #f97316 50%, #3b82f6 100%);
-            color: white;
-            padding: 8rem 0 6rem;
-            margin-top: 70px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem;
             position: relative;
             overflow: hidden;
         }
 
-        .hero::before {
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        .hero-gradient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.4;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .hero-gradient-orb.orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--wildcard-orange);
+            top: -200px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .hero-gradient-orb.orb-2 {
+            width: 400px;
+            height: 400px;
+            background: var(--wildcard-blue);
+            bottom: -100px;
+            left: 10%;
+            animation-delay: -7s;
+        }
+
+        .hero-gradient-orb.orb-3 {
+            width: 300px;
+            height: 300px;
+            background: var(--wildcard-yellow);
+            top: 40%;
+            left: 60%;
+            animation-delay: -14s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -30px) scale(1.05); }
+            50% { transform: translate(-20px, 20px) scale(0.95); }
+            75% { transform: translate(-30px, -10px) scale(1.02); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(253, 73, 25, 0.1);
+            border: 1px solid rgba(253, 73, 25, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            color: var(--wildcard-orange);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .hero-label::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--wildcard-orange);
+            border-radius: 50%;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s forwards;
+            opacity: 0;
+        }
+
+        .hero h1 .highlight {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-accent);
+            color: var(--dark-bg);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(253, 73, 25, 0.4);
+        }
+
+        .btn-primary svg {
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover svg {
+            transform: translateX(4px);
+        }
+
+        .btn-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--text-primary);
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: fadeInUp 0.8s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .scroll-indicator .mouse {
+            width: 24px;
+            height: 40px;
+            border: 2px solid var(--text-muted);
+            border-radius: 12px;
+            position: relative;
+        }
+
+        .scroll-indicator .mouse::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 8px;
+            background: var(--wildcard-orange);
+            border-radius: 2px;
+            animation: scrollDown 2s ease-in-out infinite;
+        }
+
+        @keyframes scrollDown {
+            0%, 100% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            50% { opacity: 0.3; transform: translateX(-50%) translateY(12px); }
+        }
+
+        /* Problem Section */
+        .problem-section {
+            padding: 8rem 4rem;
+            background: var(--dark-surface);
+            position: relative;
+        }
+
+        .problem-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
+            background: radial-gradient(ellipse at 20% 50%, rgba(253, 73, 25, 0.08) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .hero-content {
+        .problem-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .problem-header {
+            max-width: 700px;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--wildcard-orange);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .problem-card {
+            background: var(--dark-elevated);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-left: 3px solid var(--wildcard-orange);
+            border-radius: 0 16px 16px 0;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(255, 255, 255, 0.1);
+            border-left-color: var(--wildcard-yellow);
+        }
+
+        .problem-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .problem-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Coxswain Explainer */
+        .coxswain-section {
+            padding: 8rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .coxswain-section::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: var(--wildcard-blue);
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.15;
+            pointer-events: none;
+        }
+
+        .coxswain-container {
+            max-width: 1000px;
+            margin: 0 auto;
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
             position: relative;
-            z-index: 2;
+            z-index: 1;
         }
 
-        .hero-text h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.1;
+        .coxswain-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            line-height: 1;
             margin-bottom: 1.5rem;
         }
 
-        .hero-text p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .coxswain-content h2 .highlight {
+            color: var(--wildcard-blue);
         }
 
-        .cta-button {
-            background: #f59e0b;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 8px;
+        .coxswain-content p {
             font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .cta-button:hover {
-            background: #d97706;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+        .coxswain-content p strong {
+            color: var(--text-primary);
         }
 
-        .hero-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .coxswain-visual {
+            position: relative;
         }
 
-        .hero-visual {
-            width: 100%;
-            max-width: 500px;
-            height: 350px;
-            background: rgba(255, 255, 255, 0.1);
+        .coxswain-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-            text-align: center;
-            padding: 2rem;
+            padding: 2.5rem;
+            position: relative;
         }
 
-        /* Value Stack */
-        .value-stack {
-            background: #f8fafc;
-            padding: 4rem 0;
-        }
-
-        .value-items {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .value-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(251, 191, 36, 0.2);
-        }
-
-        .value-item h3 {
-            color: #f59e0b;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        /* Stakes Section */
-        .stakes {
-            padding: 6rem 0;
-            background: white;
-        }
-
-        .stakes h2 {
-            text-align: center;
+        .coxswain-card::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            right: 30px;
             font-size: 2.5rem;
-            color: #1f2937;
-            margin-bottom: 3rem;
+            background: var(--dark-bg);
+            padding: 0.5rem;
+            border-radius: 12px;
         }
 
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            max-width: 800px;
-            margin: 0 auto;
+        .coxswain-roles {
+            list-style: none;
         }
 
-        .problem-item {
+        .coxswain-roles li {
             display: flex;
             align-items: flex-start;
             gap: 1rem;
-            padding: 1.5rem;
-            background: #fef3c7;
-            border-radius: 8px;
-            border-left: 4px solid #f97316;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .problem-item::before {
-            content: "⚠️";
-            font-size: 1.2rem;
+        .coxswain-roles li:last-child {
+            border-bottom: none;
+        }
+
+        .role-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-elevated);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
             flex-shrink: 0;
         }
 
-        /* Value Proposition */
-        .value-prop {
-            background: #f8fafc;
-            padding: 6rem 0;
+        .role-content strong {
+            display: block;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
         }
 
-        .value-prop h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #1f2937;
-            margin-bottom: 3rem;
+        .role-content span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 8rem 4rem;
+            background: var(--dark-surface);
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            max-width: 700px;
+            margin-bottom: 4rem;
         }
 
         .services-grid {
@@ -239,546 +605,1188 @@
         }
 
         .service-card {
-            background: white;
+            background: var(--dark-elevated);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
             padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(251, 191, 36, 0.15);
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 4rem;
+            line-height: 1;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.3;
+            margin-bottom: 1rem;
         }
 
         .service-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-            border-radius: 12px;
-            margin: 0 auto 1.5rem;
+            background: var(--dark-surface);
+            border-radius: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
+            margin-bottom: 1.5rem;
             font-size: 1.5rem;
         }
 
+        .service-card:nth-child(1) .service-icon { background: rgba(253, 73, 25, 0.15); }
+        .service-card:nth-child(2) .service-icon { background: rgba(252, 190, 32, 0.15); }
+        .service-card:nth-child(3) .service-icon { background: rgba(46, 172, 235, 0.15); }
+
         .service-card h3 {
-            font-size: 1.4rem;
-            color: #1f2937;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75rem;
+            letter-spacing: 0.02em;
             margin-bottom: 1rem;
         }
 
-        .service-card p {
-            color: #64748b;
+        .service-card > p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
             margin-bottom: 1.5rem;
         }
 
-        .secondary-cta {
-            background: #3b82f6;
-            color: white;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s ease;
+        .service-features {
+            list-style: none;
         }
 
-        .secondary-cta:hover {
-            background: #2563eb;
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            padding: 0.5rem 0;
         }
 
-        /* Guide Section */
-        .guide {
-            padding: 6rem 0;
-            background: white;
+        .service-features li::before {
+            content: '\2192';
+            color: var(--wildcard-yellow);
+            font-weight: bold;
         }
 
-        .guide-content {
-            text-align: center;
-            max-width: 800px;
+        /* Who We Help */
+        .who-section {
+            padding: 8rem 4rem;
+        }
+
+        .who-container {
+            max-width: 1200px;
             margin: 0 auto;
         }
 
-        .guide h2 {
-            font-size: 2.5rem;
-            color: #1f2937;
-            margin-bottom: 2rem;
-        }
-
-        .empathy-statement {
-            font-size: 1.2rem;
-            color: #64748b;
-            margin-bottom: 3rem;
-            font-style: italic;
-        }
-
-        .testimonials {
+        .who-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
-        .testimonial {
-            background: #f8fafc;
-            padding: 2rem;
+        .who-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.75rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .who-card:hover {
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .who-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--dark-elevated);
             border-radius: 12px;
-            border-left: 4px solid #3b82f6;
-        }
-
-        .testimonial p {
-            font-style: italic;
-            margin-bottom: 1rem;
-            color: #374151;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #3b82f6;
-        }
-
-        /* Plan Section */
-        .plan {
-            background: #f8fafc;
-            padding: 6rem 0;
-        }
-
-        .plan h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #1f2937;
-            margin-bottom: 3rem;
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .step {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .step-number {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
-            color: white;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin: 0 auto 1.5rem;
+            font-size: 1.25rem;
+            flex-shrink: 0;
         }
 
-        .step h3 {
-            font-size: 1.3rem;
-            color: #1f2937;
-            margin-bottom: 1rem;
+        .who-content h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
         }
 
-        /* Explanatory Section */
-        .explanatory {
-            background: #1f2937;
-            color: white;
-            padding: 6rem 0;
+        .who-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Not For You Section */
+        .not-for-you {
+            padding: 4rem;
+            background: var(--dark-surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .not-for-you-container {
+            max-width: 800px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        .explanatory h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
+        .not-for-you h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-muted);
         }
 
-        .explanatory p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem;
-            opacity: 0.9;
+        .not-for-you p {
+            color: var(--text-secondary);
+            font-size: 1rem;
         }
 
-        /* Lead Magnet */
-        .lead-magnet {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-            padding: 6rem 0;
+        .not-for-you strong {
+            color: var(--text-primary);
         }
 
-        .magnet-content {
+        /* Results Section */
+        .results-section {
+            padding: 8rem 4rem;
+        }
+
+        .results-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .results-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .magnet-text h2 {
+        .results-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 4vw, 3.5rem);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .results-content h2 .highlight {
+            color: var(--wildcard-yellow);
+        }
+
+        .results-content p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+
+        .results-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .stat-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
             font-size: 2.5rem;
-            margin-bottom: 1rem;
+            background: var(--gradient-cool);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .magnet-text h3 {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
         }
 
-        .magnet-list {
-            list-style: none;
-            margin-bottom: 2rem;
+        /* Testimonials */
+        .testimonials {
+            padding: 8rem 4rem;
+            background: var(--dark-surface);
         }
 
-        .magnet-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: var(--dark-elevated);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 2.5rem;
             position: relative;
         }
 
-        .magnet-list li::before {
-            content: "✓";
+        .testimonial-card::before {
+            content: '"';
             position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
+            top: 1.5rem;
+            right: 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            line-height: 1;
+            color: var(--wildcard-orange);
+            opacity: 0.1;
         }
 
-        .magnet-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 12px;
-            color: #1f2937;
+        .testimonial-card blockquote {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
-        .form-group {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: var(--dark-bg);
+        }
+
+        .author-info strong {
+            display: block;
+            font-size: 0.95rem;
+        }
+
+        .author-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Founder Section */
+        .founder-section {
+            padding: 8rem 4rem;
+        }
+
+        .founder-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .founder-image {
+            width: 300px;
+            height: 360px;
+            background: linear-gradient(135deg, rgba(253, 73, 25, 0.2) 0%, var(--dark-surface) 50%, rgba(46, 172, 235, 0.2) 100%);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .founder-placeholder {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            opacity: 0.2;
+        }
+
+        .founder-content .section-label {
+            color: var(--wildcard-blue);
+        }
+
+        .founder-content h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .founder-content p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
             margin-bottom: 1rem;
+            line-height: 1.7;
         }
 
-        .form-group input {
+        .founder-content p strong {
+            color: var(--text-primary);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 8rem 4rem;
+            background: var(--dark-surface);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-list {
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .faq-question {
             width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #d1d5db;
-            border-radius: 6px;
-            font-size: 1rem;
+            background: none;
+            border: none;
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
         }
 
-        .form-group input:focus {
-            outline: none;
-            border-color: #f59e0b;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        .faq-question h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+
+        .faq-question span {
+            font-size: 1.5rem;
+            color: var(--wildcard-yellow);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.open .faq-question span {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-answer p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 8rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(253, 73, 25, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-container h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            line-height: 0.95;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-container > p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cta-note {
+            margin-top: 2rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
         /* Footer */
-        footer {
-            background: #1f2937;
-            color: white;
-            padding: 4rem 0 2rem;
+        .footer {
+            padding: 4rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .footer-content {
+        .footer-top {
             display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 3rem;
-            margin-bottom: 2rem;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
         }
 
-        .footer-section h3 {
-            color: #f59e0b;
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-links h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
+            color: var(--text-primary);
         }
 
-        .footer-section a {
-            color: #d1d5db;
-            text-decoration: none;
-            display: block;
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
             margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
             transition: color 0.3s ease;
         }
 
-        .footer-section a:hover {
-            color: white;
+        .footer-links a:hover {
+            color: var(--wildcard-yellow);
         }
 
         .footer-bottom {
-            border-top: 1px solid #374151;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             padding-top: 2rem;
-            text-align: center;
-            color: #9ca3af;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Responsive Design */
+        .footer-copyright {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--dark-surface);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--wildcard-yellow);
+            border-color: var(--wildcard-yellow);
+            color: var(--dark-bg);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--text-primary);
+            transition: all 0.3s ease;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .nav {
+                padding: 1rem 2rem;
+            }
+
+            .hero {
+                padding: 6rem 2rem 4rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .coxswain-container,
+            .results-grid,
+            .founder-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .founder-image {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
         @media (max-width: 768px) {
-            .hero-content,
-            .magnet-content {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-text h1 {
-                font-size: 2.5rem;
-            }
-
-            .services-grid,
-            .steps,
-            .value-items {
-                grid-template-columns: 1fr;
-            }
-
-            .problems-grid,
-            .testimonials {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-
             .nav-links {
                 display: none;
             }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .problem-grid,
+            .who-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        /* Animations on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <a href="#" class="logo">Wildcard Product Studio</a>
-            <ul class="nav-links">
-                <li><a href="#services">Services</a></li>
-                <li><a href="#how-we-work">How We Work</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-logo">
+            <img src="https://static.tildacdn.net/tild3033-3763-4431-b361-343334336235/Wildcard_Logo.png" alt="Wildcard Studio">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#approach">Our Approach</a></li>
+            <li><a href="#services">How We Help</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#founder">About</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Book Assessment</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Turn Your Vision Into a Market-Ready Product</h1>
-                    <p>Product strategy and custom development for non-technical founders who want to build scalable software without the technical overwhelm.</p>
-                    <a href="#contact" class="cta-button">Schedule Your Free Strategy Call</a>
+        <div class="hero-bg">
+            <div class="hero-gradient-orb orb-1"></div>
+            <div class="hero-gradient-orb orb-2"></div>
+            <div class="hero-gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-label">Product Crisis Management</div>
+            <h1>Your Product Is<br><span class="highlight">Failing.</span><br>We Fix That.</h1>
+            <p class="hero-description">We're the coxswain for product teams that are stuck, misaligned, or burning runway without shipping. We diagnose the real problem, build the turnaround plan, and make sure it actually gets executed.</p>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">
+                    Book a Crisis Assessment
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#approach" class="btn-secondary">How We Work</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem-section">
+        <div class="problem-container">
+            <div class="problem-header animate-on-scroll">
+                <span class="section-label">Sound Familiar?</span>
+                <h2 class="section-title">The Warning Signs<br>We See Every Day</h2>
+                <p class="section-description">These aren't just problems—they're symptoms of deeper dysfunction. We've seen them all, and we know how to fix them.</p>
+            </div>
+
+            <div class="problem-grid">
+                <div class="problem-card animate-on-scroll">
+                    <h3>"We shipped nothing this quarter."</h3>
+                    <p>You've got a team. You've got funding. But somehow, nothing is getting delivered. Sprints come and go with nothing to show for them.</p>
                 </div>
-                <div class="hero-image">
-                    <div class="hero-visual">
-                        <div>
-                            <h3>🚀 From Idea to Launch</h3>
-                            <p>Non-technical founder confidently presenting their launched product to investors</p>
+                <div class="problem-card animate-on-scroll">
+                    <h3>"Our investors are asking questions."</h3>
+                    <p>You're burning through runway, milestones keep slipping, and the next board meeting is going to be uncomfortable. You need a plan that works.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <h3>"Everyone's busy, but nothing moves."</h3>
+                    <p>Your team is working hard—or at least looks like it. But the product isn't progressing. There's always a blocker, always a delay.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <h3>"We're waiting on Amanda's design."</h3>
+                    <p>For three months. Meanwhile, the entire roadmap is stalled. Nobody is making the hard call to break the logjam.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <h3>"I don't know why we're stuck."</h3>
+                    <p>You've tried everything—new processes, new tools, new people. But you can't pinpoint the actual problem. You need outside eyes.</p>
+                </div>
+                <div class="problem-card animate-on-scroll">
+                    <h3>"This contract might be lost."</h3>
+                    <p>You've got a deadline, a deliverable, and no clear path to hit it. The stakes are high, and the team is paralyzed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coxswain Explainer -->
+    <section class="coxswain-section" id="approach">
+        <div class="coxswain-container">
+            <div class="coxswain-content animate-on-scroll">
+                <h2>We're Your<br><span class="highlight">Coxswain</span></h2>
+                <p>In rowing, the coxswain is the non-rowing member who steers the boat, calls the strategy, and aligns the crew. They see what others can't—because they're not buried in the work of rowing.</p>
+                <p><strong>That's what we do for failing product teams.</strong></p>
+                <p>We're not here to row for you. We're here to steer your boat, align your crew, and get you across the finish line.</p>
+            </div>
+            <div class="coxswain-visual animate-on-scroll">
+                <div class="coxswain-card">
+                    <ul class="coxswain-roles">
+                        <li>
+                            <div class="role-icon">&#128065;</div>
+                            <div class="role-content">
+                                <strong>See what you can't</strong>
+                                <span>You're too close to the problem. We bring outside perspective.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="role-icon">&#128227;</div>
+                            <div class="role-content">
+                                <strong>Call the strategy</strong>
+                                <span>We make the hard decisions that get everyone moving.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="role-icon">&#127919;</div>
+                            <div class="role-content">
+                                <strong>Align the crew</strong>
+                                <span>We get your team rowing in the same direction.</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="role-icon">&#127937;</div>
+                            <div class="role-content">
+                                <strong>Steer to the finish</strong>
+                                <span>We stay until you cross the line.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">How We Work</span>
+                <h2 class="section-title">From Stuck to Shipped</h2>
+                <p class="section-description">We don't hand you a document and leave. We diagnose, plan, and execute—with you—until the job is done.</p>
+            </div>
+
+            <div class="services-grid">
+                <article class="service-card animate-on-scroll">
+                    <div class="service-number">01</div>
+                    <div class="service-icon">&#128065;</div>
+                    <h3>See the Course</h3>
+                    <p>We dive deep into your chaos to diagnose what's actually blocking your boat from moving—not what you think is wrong.</p>
+                    <ul class="service-features">
+                        <li>Full technical and process audit</li>
+                        <li>Team velocity analysis</li>
+                        <li>Stakeholder interviews</li>
+                        <li>Blocker identification</li>
+                        <li>Brutal honesty about what's broken</li>
+                    </ul>
+                </article>
+
+                <article class="service-card animate-on-scroll">
+                    <div class="service-number">02</div>
+                    <div class="service-icon">&#128227;</div>
+                    <h3>Call the Strategy</h3>
+                    <p>We align your crew with a clear, executable turnaround plan. Not vague recommendations—a sprint-by-sprint roadmap.</p>
+                    <ul class="service-features">
+                        <li>Clear milestone-focused roadmap</li>
+                        <li>Reorganized backlog with real priorities</li>
+                        <li>Team restructuring recommendations</li>
+                        <li>Communication frameworks that work</li>
+                        <li>Accountability mechanisms</li>
+                    </ul>
+                </article>
+
+                <article class="service-card animate-on-scroll">
+                    <div class="service-number">03</div>
+                    <div class="service-icon">&#127937;</div>
+                    <h3>Steer to the Finish</h3>
+                    <p>We stay in the boat until you cross the line. We lead standups, make the hard calls, and course-correct in real-time.</p>
+                    <ul class="service-features">
+                        <li>Lead standups and keep momentum</li>
+                        <li>Break logjams when teams are stuck</li>
+                        <li>Course-correct in real-time</li>
+                        <li>Install the right people in right roles</li>
+                        <li>Build systems so you don't need us forever</li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Who We Help -->
+    <section class="who-section">
+        <div class="who-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Who We Work With</span>
+                <h2 class="section-title">Teams That Need to Deliver</h2>
+                <p class="section-description">If you have a failing product initiative and something needs to change, we're interested.</p>
+            </div>
+
+            <div class="who-grid">
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#128640;</div>
+                    <div class="who-content">
+                        <h4>Funded Startups</h4>
+                        <p>Burning through runway without shipping</p>
+                    </div>
+                </div>
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#127963;</div>
+                    <div class="who-content">
+                        <h4>Government Contractors</h4>
+                        <p>Facing milestone deadlines with nothing to show</p>
+                    </div>
+                </div>
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#128187;</div>
+                    <div class="who-content">
+                        <h4>SaaS Companies</h4>
+                        <p>Products that should work but somehow don't</p>
+                    </div>
+                </div>
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#127891;</div>
+                    <div class="who-content">
+                        <h4>EdTech & Education</h4>
+                        <p>Teams stuck in analysis paralysis</p>
+                    </div>
+                </div>
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#128084;</div>
+                    <div class="who-content">
+                        <h4>CTOs & Product Leaders</h4>
+                        <p>Need outside perspective to break the logjam</p>
+                    </div>
+                </div>
+                <div class="who-card animate-on-scroll">
+                    <div class="who-icon">&#128293;</div>
+                    <div class="who-content">
+                        <h4>Any Team in Crisis</h4>
+                        <p>Struggling to deliver on commitments</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Not For You -->
+    <section class="not-for-you">
+        <div class="not-for-you-container animate-on-scroll">
+            <h3>Not the Right Fit?</h3>
+            <p>We don't maintain websites. We don't do routine development work. We specialize in one thing: <strong>turning around failing product initiatives before they tank your company.</strong> If things are going well and you just need extra hands, we're not your team.</p>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section class="results-section" id="results">
+        <div class="results-container">
+            <div class="results-grid">
+                <div class="results-content animate-on-scroll">
+                    <span class="section-label">What You Get</span>
+                    <h2 class="section-title">From "We Might Lose This" to <span class="highlight">"We Hit Our Milestone"</span></h2>
+                    <p>Our clients don't just get unstuck—they ship. They hit their milestones. They secure their extensions. They stop dreading board meetings.</p>
+                    <div class="results-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">2-3 wks</div>
+                            <div class="stat-label">Assessment to action plan</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Clarity on what's actually wrong</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Sprint</div>
+                            <div class="stat-label">By sprint roadmap, not vague advice</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">Until Done</div>
+                            <div class="stat-label">We stay to see it executed</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Stack -->
-    <section class="value-stack">
-        <div class="container">
-            <div class="value-items">
-                <div class="value-item">
-                    <h3>✓ Launch Faster</h3>
-                    <p>Skip the technical learning curve</p>
-                </div>
-                <div class="value-item">
-                    <h3>✓ Build Smarter</h3>
-                    <p>Get strategic guidance from day one</p>
-                </div>
-                <div class="value-item">
-                    <h3>✓ Scale Confidently</h3>
-                    <p>Products built for long-term growth</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Stakes Section -->
-    <section class="stakes">
-        <div class="container">
-            <h2>Sound Familiar?</h2>
-            <div class="problems-grid">
-                <div class="problem-item">
-                    <div>You have a great product idea but don't know where to start technically</div>
-                </div>
-                <div class="problem-item">
-                    <div>You built an app with Lovable, Replit, or Bolt but don't know how to make it market-ready</div>
-                </div>
-                <div class="problem-item">
-                    <div>You're stuck between "it works" and "people will pay for it"</div>
-                </div>
-                <div class="problem-item">
-                    <div>You're worried about making expensive development mistakes as you scale</div>
-                </div>
-                <div class="problem-item">
-                    <div>You've tried working with developers who don't understand your business goals</div>
-                </div>
-                <div class="problem-item">
-                    <div>You need someone who can think strategically, not just code</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Value Proposition -->
-    <section id="services" class="value-prop">
-        <div class="container">
-            <h2>How We Can Help</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🧭</div>
-                    <h3>Product Strategy & Validation</h3>
-                    <p>Whether you're starting from scratch or have a prototype from Lovable/Replit, get clarity on what to build next. We help validate your concept and create a roadmap that drives real business results.</p>
-                    <a href="#contact" class="secondary-cta">Learn About Strategy Services</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>Product Development & Scaling</h3>
-                    <p>Transform your idea into a market-ready product, or take your AI-built app to the next level. We handle the technical complexity while keeping you informed every step.</p>
-                    <a href="#contact" class="secondary-cta">Explore Development Services</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Product Optimization & Growth</h3>
-                    <p>Turn your working app into something people love and pay for. We help optimize user experience, add essential features, and prepare for sustainable growth.</p>
-                    <a href="#contact" class="secondary-cta">View Growth Options</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Guide Section -->
-    <section class="guide">
-        <div class="container">
-            <div class="guide-content">
-                <h2>We Get It</h2>
-                <p class="empathy-statement">"We understand that bringing a product idea to life can feel overwhelming when you don't have a technical background. And if you've already built something with AI tools like Lovable or Replit, you might be wondering 'Now what?' - We've got you covered."</p>
-                
-                <div class="testimonials">
-                    <div class="testimonial">
-                        <p>"We built our first version with Bolt but had no idea how to make it scalable. Wildcard helped us turn our prototype into a real business with paying customers."</p>
-                        <div class="testimonial-author">- Marcus K., SaaS Founder</div>
-                    </div>
-                    <div class="testimonial">
-                        <p>"Wildcard took our complex AI idea and made it simple to understand and execute. They guided us through every decision without the technical overwhelm."</p>
-                        <div class="testimonial-author">- Sarah M., AI Startup Founder</div>
+                <div class="coxswain-visual animate-on-scroll">
+                    <div class="coxswain-card">
+                        <ul class="coxswain-roles">
+                            <li>
+                                <div class="role-icon">&#128269;</div>
+                                <div class="role-content">
+                                    <strong>Clarity</strong>
+                                    <span>We tell you exactly why you're stuck and what needs to happen next.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="role-icon">&#128203;</div>
+                                <div class="role-content">
+                                    <strong>A Real Plan</strong>
+                                    <span>Not vague recommendations—a specific, sprint-by-sprint roadmap.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="role-icon">&#9989;</div>
+                                <div class="role-content">
+                                    <strong>Accountability</strong>
+                                    <span>We don't hand you a document and leave. We make sure it happens.</span>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="role-icon">&#127942;</div>
+                                <div class="role-content">
+                                    <strong>Results</strong>
+                                    <span>Milestones hit. Contracts extended. Products shipped.</span>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Plan Section -->
-    <section id="how-we-work" class="plan">
-        <div class="container">
-            <h2>How It Works</h2>
-            <div class="steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Free Strategy Call</h3>
-                    <p>We discuss your vision, challenges, and goals to determine the best path forward for your product.</p>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">Results</span>
+                <h2 class="section-title">What Clients Say</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <article class="testimonial-card animate-on-scroll">
+                    <blockquote>"Courtney came in when we'd delivered nothing for a year on a $5M contract. Within weeks, she'd diagnosed the problem, reorganized our sprint structure, and created a roadmap that actually made sense. We hit our milestone and got the contract extension. I don't know what we would have done without her."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TW</div>
+                        <div class="author-info">
+                            <strong>Client</strong>
+                            <span>Government Contractor</span>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="testimonial-card animate-on-scroll">
+                    <blockquote>"She doesn't just tell you what's wrong—she tells you exactly what to do about it, sprint by sprint. And then she makes sure it actually happens. That's the difference."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">PM</div>
+                        <div class="author-info">
+                            <strong>Product Leader</strong>
+                            <span>SaaS Company</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Founder Section -->
+    <section class="founder-section" id="founder">
+        <div class="founder-container">
+            <div class="founder-image animate-on-scroll">
+                <span class="founder-placeholder">CEW</span>
+            </div>
+            <div class="founder-content animate-on-scroll">
+                <span class="section-label">The Founder</span>
+                <h2>Courtney Eimerman-Wallace</h2>
+                <p><strong>Courtney is a Principal Product Manager who's spent nearly five years being the "cleanup crew" for failing product initiatives.</strong></p>
+                <p>When a $5M government contract delivers nothing for a year, they call Courtney. When a team is stuck and investors are circling, they call Courtney. When nobody can figure out which way is up, they call Courtney.</p>
+                <p>She walks into chaos, figures out what's <em>actually</em> wrong (not what people think is wrong), and creates the plan that gets everyone rowing in the same direction again.</p>
+                <p>Now she's doing it full-time through Wildcard Studio.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="faq-container">
+            <div class="section-header animate-on-scroll">
+                <span class="section-label">FAQ</span>
+                <h2 class="section-title">Questions We Get</h2>
+            </div>
+
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h4>How is this different from regular consulting?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most consultants optimize what's working. We fix what's broken. We're not here to make your good product better—we're here to save your failing product from tanking your company. And we don't just advise; we stay to make sure the plan actually gets executed.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Custom Proposal</h3>
-                    <p>Receive a tailored plan with clear timeline, deliverables, and next steps - no technical jargon.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h4>How long do engagements typically last?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Assessment and strategy: 2-3 weeks. Implementation support: 2-6 months depending on severity. We stay as long as you need us, but our goal is to install systems so you don't need us forever.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Launch Your Product</h3>
-                    <p>Watch your idea become reality with ongoing guidance and support throughout the journey.</p>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h4>Do you do hands-on development work?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>No. We're the coxswain, not the rowers. We tell you what needs to get built and make sure it actually gets built, but we're not writing your code. Though we can help you find the right people if your team needs strengthening.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h4>What if we're not sure if we need help?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>If you're asking that question, you probably do. Book the assessment call—it's a 30-minute conversation. Worst case, we tell you you're fine and don't need us. Best case, we save your company.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <h4>How much does this cost?</h4>
+                        <span>+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We offer flexible engagement models depending on your situation—from traditional consulting fees to equity-based arrangements where our incentives are fully aligned with your success. Let's talk about what makes sense for you.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Explanatory Paragraph -->
-    <section id="about" class="explanatory">
-        <div class="container">
-            <h2>Ready to Build Something Remarkable?</h2>
-            <p>At Wildcard Product Studio, we know what it's like to have a game-changing product idea but feel lost in the technical complexity. Maybe you've even built something with Lovable, Replit, or Bolt but don't know how to turn it into a real business. That's why we created a clear, strategic approach to product development that speaks your language, not ours. So you can focus on growing your business while we handle the technical execution.</p>
-            <a href="#contact" class="cta-button">Get Your Free Strategy Session</a>
-        </div>
-    </section>
-
-    <!-- Lead Magnet -->
-    <section class="lead-magnet">
-        <div class="container">
-            <div class="magnet-content">
-                <div class="magnet-text">
-                    <h2>Free Resource for Ambitious Founders</h2>
-                    <h3>From AI-Built App to Market-Ready Product</h3>
-                    <p>The complete guide for founders who've built something with Lovable, Replit, Bolt, or Lazy but don't know what comes next</p>
-                    
-                    <ul class="magnet-list">
-                        <li>Product validation framework for existing apps</li>
-                        <li>User research templates to understand what people actually want</li>
-                        <li>Technical audit checklist: Is your app ready to scale?</li>
-                        <li>Go-to-market strategy worksheet</li>
-                        <li>Revenue model decision tree</li>
-                    </ul>
-                </div>
-                
-                <form class="magnet-form">
-                    <h3 style="margin-bottom: 1rem; color: #1f2937;">Download Your Free Guide</h3>
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Company Name">
-                    </div>
-                    <button type="submit" class="cta-button" style="width: 100%;">Download Free Guide</button>
-                </form>
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <h2 class="animate-on-scroll">Ready to Get<br>Unstuck?</h2>
+            <p class="animate-on-scroll">Book a 30-minute crisis assessment. We'll tell you honestly whether we can help—and if we can, exactly what it would take to turn things around.</p>
+            <div class="cta-buttons animate-on-scroll">
+                <a href="mailto:hello@askwildcard.com" class="btn-primary">
+                    Book Crisis Assessment
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
             </div>
+            <p class="cta-note animate-on-scroll">No pitch decks required. Just a conversation about what's broken and how to fix it.</p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Wildcard Product Studio</h3>
-                    <p style="color: #d1d5db; margin-bottom: 1rem;">Product Strategy & Development for Non-Technical Founders</p>
-                    <p style="color: #d1d5db;">Phone: +1 312-505-1093</p>
-                    <p style="color: #d1d5db;">Email: courtney@askwildcard.com</p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <a href="#services">Product Strategy & Validation</a>
-                    <a href="#services">Custom Development</a>
-                    <a href="#services">Product Optimization</a>
-                    <a href="#how-we-work">How We Work</a>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Resources</h3>
-                    <a href="#">Case Studies</a>
-                    <a href="#">Blog & Resources</a>
-                    <a href="#">Free Strategy Call</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Service</a>
-                </div>
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <img src="https://static.tildacdn.net/tild3033-3763-4431-b361-343334336235/Wildcard_Logo.png" alt="Wildcard Studio">
+                </a>
+                <p>The coxswain for failing product teams. We diagnose, plan, and execute turnarounds.</p>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Wildcard Product Studio. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Navigate</h4>
+                <ul>
+                    <li><a href="#approach">Our Approach</a></li>
+                    <li><a href="#services">How We Help</a></li>
+                    <li><a href="#results">Results</a></li>
+                    <li><a href="#founder">About</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Case Studies</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Connect</h4>
+                <ul>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="mailto:hello@askwildcard.com">Email Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">&copy; 2024 Wildcard Studio. All rights reserved.</p>
+            <div class="footer-social">
+                <a href="#" aria-label="LinkedIn">in</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Staggered animations for grid items
+        document.querySelectorAll('.problem-grid .problem-card, .services-grid .service-card, .who-grid .who-card').forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -792,20 +1800,32 @@
             });
         });
 
-        // Form submission handler
-        document.querySelector('.magnet-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you! Your free guide will be sent to your email shortly.');
+        // Nav background on scroll
+        const nav = document.querySelector('.nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(10, 10, 15, 0.95)';
+            } else {
+                nav.style.background = 'rgba(10, 10, 15, 0.8)';
+            }
         });
 
-        // Add scroll effect to header
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            if (window.scrollY > 100) {
-                header.style.background = 'rgba(255, 255, 255, 0.98)';
-            } else {
-                header.style.background = 'rgba(255, 255, 255, 0.95)';
-            }
+        // FAQ accordion
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                const isOpen = item.classList.contains('open');
+
+                // Close all items
+                document.querySelectorAll('.faq-item').forEach(faq => {
+                    faq.classList.remove('open');
+                });
+
+                // Open clicked item if it wasn't already open
+                if (!isOpen) {
+                    item.classList.add('open');
+                }
+            });
         });
     </script>
 </body>
